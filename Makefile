@@ -14,7 +14,7 @@ build: ## Build website
 	#@docker image inspect ifunky/site:latest
 
 deploy: ## Deploy website
-	@helm upgrade secsite-hugo ./helm/ifunky-secsite \
+	@helm upgrade secsite-hugo ./helm/ifunky-secsite --debug \
 		--namespace=ifunky \
 		--create-namespace \
 		--wait \
@@ -41,5 +41,6 @@ run: ## Run site in docker
 	docker run -p 8080:80 ifunky/site
 
 push: ## Piush to docker repo
-	@docker tag ifunky/site:latest ifunky/site:latest
-	@docker push ifunky/site:latest
+	docker tag ifunky/site:latest ifunky/site:latest
+	docker push ifunky/site:latest
+	wizcli docker tag -i ${IMAGE_REPO}:${IMAGE_TAG}

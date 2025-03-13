@@ -1,4 +1,4 @@
 requests==2.19.1
 # pyjwt==1.7.1
-snakefood==1.5
+snakefood==1.4
 
